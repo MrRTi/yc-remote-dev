@@ -1,0 +1,11 @@
+yc-terraform:
+  build: .
+  env_file:
+    - .env
+    - secrets.env
+  stdin_open: true
+  tty: true
+  volumes:
+    - .:/yc-terraform
+    - ~/.ssh:/root/.ssh
+    - ~/.bash_history:/root/.bash_history

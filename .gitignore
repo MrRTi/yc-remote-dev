@@ -1,0 +1,6 @@
+**/.terraform/
+ssh_keys/*
+!ssh_keys/root_ssh_key.pub.example
+secrets.env
+**/.terraform.tfstate*
+**/terraform.tfstate*

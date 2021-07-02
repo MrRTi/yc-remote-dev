@@ -1,0 +1,18 @@
+dc_vm_info:
+	@docker-compose run --rm yc-terraform "make yc_init && make vm_info"
+
+dc_vm_ip:
+	@docker-compose run --rm yc-terraform "make yc_init && make vm_ip"
+
+dc_vm_start:
+	@docker-compose run --rm yc-terraform "make yc_init && make vm_start"
+
+dc_vm_stop:
+	@docker-compose run --rm yc-terraform "make yc_init && make vm_stop"
+
+dc_run:
+	@docker-compose run --rm yc-terraform "make yc_init && bash"
+
+dc_ssh_vm:
+	@docker-compose run --rm yc-terraform "make yc_init && make ssh_vm" | \
+		tail -1

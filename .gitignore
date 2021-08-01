@@ -4,3 +4,4 @@ ssh_keys/*
 secrets.env
 **/.terraform.tfstate*
 **/terraform.tfstate*
+*.swp

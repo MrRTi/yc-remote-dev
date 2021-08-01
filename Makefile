@@ -7,13 +7,14 @@ yc_init:
 	@yc config profile create yc-user-profile && \
 	yc config set token ${TF_VAR_token} && \
 	yc config set cloud-id ${TF_VAR_cloud_id} && \
-	yc config set folder-id ${TF_VAR_folder_id}
+	yc config set folder-id ${TF_VAR_folder_id} && \
+	yc config set format json
 
 vm_info:
-	@yc compute instance list | grep ${TF_VAR_workstation_name} | awk "{print \$$2}" | xargs yc compute instance get --full
+	@yc compute instance get --full $${TF_VAR_workstation_name}
 
 vm_ip:
-	@yc compute instance list | grep ${TF_VAR_workstation_name} | awk "{print \$$10}"
+	@yc compute instance list | jq ".[] | select(.name==\"$$TF_VAR_workstation_name\") | .network_interfaces | .[0] | .primary_v4_address | .one_to_one_nat | .address"
 
 vm_start:
 	@yc compute instance start --name ${TF_VAR_workstation_name}

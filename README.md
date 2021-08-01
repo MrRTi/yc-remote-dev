@@ -16,7 +16,7 @@
 
 1. Fill `secrets.env` with credentials
 
-1. Update variables in locals inside `main.tf` if needed. Use commands below to check your changes.
+1. Update variables in locals inside `workstation/main.tf` if needed. Use commands below to check your changes.
 
         $ terraform fmt
         $ terraform validate

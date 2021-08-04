@@ -2,6 +2,8 @@ locals {
   os_image_id    = "fd8vmcue7aajpmeo39kk"
   hdd_size_in_gb = 30
 
+  instance_key_file = join(".", [join("/", ["", var.service_name, var.ssh_key_path]), "pub"])
+
   vm_platform            = "standard-v1"
   number_of_cores        = 2
   memory_in_gb           = 6
@@ -39,7 +41,7 @@ resource "yandex_compute_instance" "workstation" {
   }
 
   metadata = {
-    ssh-keys = join(":", [var.username, file(join(".", [join("/", ["", var.service_name, var.ssh_key_path]), "pub"]))])
+    ssh-keys = join(":", [var.username, file(local.instance_key_file)])
   }
 }
 

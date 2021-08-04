@@ -4,7 +4,7 @@ generate_ssh:
 	ssh-keygen -t ed25519 -C ${SSH_KEY_MESSAGE} -P '' -f '/${TF_VAR_service_name}/${TF_VAR_ssh_key_path}'
 
 yc_init:
-	@yc config profile create yc-user-profile && \
+	@yc config profile create yc-user && \
 	yc config set token ${TF_VAR_token} && \
 	yc config set cloud-id ${TF_VAR_cloud_id} && \
 	yc config set folder-id ${TF_VAR_folder_id} && \

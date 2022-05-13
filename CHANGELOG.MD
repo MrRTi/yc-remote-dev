@@ -1,4 +1,12 @@
-# Changelog:
+# Changelog
+
+## v0.0.4
+
+- Update: Bump terraform version up to v1.1.9
+
+## v0.0.3
+
+- Update: SSH key path refactoring
 
 ## v0.0.2
 

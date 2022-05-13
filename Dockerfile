@@ -1,4 +1,4 @@
-FROM hashicorp/terraform:0.14.9
+FROM hashicorp/terraform:1.1.9
 
 RUN apk update && apk upgrade
 RUN apk add bash openssh git vim make curl jq

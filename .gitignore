@@ -1,7 +1,8 @@
 **/.terraform/
 ssh_keys/*
 !ssh_keys/root_ssh_key.pub.example
-secrets.env
+secrets.env*
 **/.terraform.tfstate*
 **/terraform.tfstate*
 *.swp
+.DS_Store

@@ -1,14 +1,15 @@
 version: "3.7"
 
+x-volumes: &infra-volumes
+  - ~/.bash_history:/root/.bash_history
+  - .:/infra
+
 services:
-  yc-terraform:
+  yc-infra:
     build: .
     env_file:
       - .env
       - secrets.env
     stdin_open: true
     tty: true
-    volumes:
-      - .:/yc-terraform
-      - ~/.ssh:/root/.ssh
-      - ~/.bash_history:/root/.bash_history
+    volumes: *infra-volumes

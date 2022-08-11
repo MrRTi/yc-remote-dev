@@ -16,8 +16,13 @@ resource "yandex_compute_image" "ws-hdd-image" {
   min_disk_size = local.hdd_size_in_gb
 }
 
-resource "yandex_compute_instance" "workstation" {
-  name        = var.workstation_name
+moved {
+  from=yandex_compute_instance.workstation
+  to=yandex_compute_instance.remote
+}
+
+resource "yandex_compute_instance" "remote" {
+  name        = var.remote_name
   platform_id = local.vm_platform
   zone        = var.zone
 

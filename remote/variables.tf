@@ -28,7 +28,7 @@ variable "ssh_key_path" {
   default     = "/yc-terraform/ssh_keys/root_ssh_key"
 }
 
-variable "workstation_name" {
+variable "remote_name" {
   description = "The name of virtual machine."
   type        = string
   default     = "workstation-1"

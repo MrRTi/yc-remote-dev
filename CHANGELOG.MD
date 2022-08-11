@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.0.5
+
+- Update: Bump terraform version up to v.1.2.7
+- Update: Rename workstation to remote
+- Update: Add aliases for terraform
+
 ## v0.0.4
 
 - Update: Bump terraform version up to v1.1.9

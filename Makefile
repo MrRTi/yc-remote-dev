@@ -11,16 +11,16 @@ yc_init:
 	yc config set format json
 
 vm_info:
-	@yc compute instance get --full $${TF_VAR_workstation_name}
+	@yc compute instance get --full $${TF_VAR_remote_name}
 
 vm_ip:
-	@yc compute instance list | jq ".[] | select(.name==\"$$TF_VAR_workstation_name\") | .network_interfaces | .[0] | .primary_v4_address | .one_to_one_nat | .address"
+	@yc compute instance list | jq ".[] | select(.name==\"$$TF_VAR_remote_name\") | .network_interfaces | .[0] | .primary_v4_address | .one_to_one_nat | .address"
 
 vm_start:
-	@yc compute instance start --name ${TF_VAR_workstation_name}
+	@yc compute instance start --name ${TF_VAR_remote_name}
 
 vm_stop:
-	@yc compute instance stop --name ${TF_VAR_workstation_name}
+	@yc compute instance stop --name ${TF_VAR_remote_name}
 
 ssh_vm:
 	@IP_ADDRESS=$$(make --no-print-directory vm_ip) bash -c 'printf "ssh -i $${TF_VAR_ssh_key_path} $${TF_VAR_username}@$${IP_ADDRESS}"'

@@ -4,7 +4,7 @@
 
 - [Info](https://cloud.yandex.com/en-ru/docs/solutions/infrastructure-management/terraform-quickstart#before-you-begin)
 - [OAuth Token](https://cloud.yandex.com/en-ru/docs/iam/concepts/authorization/oauth-token)
-- Default workstation username - `ubuntu`
+- Default remote username - `ubuntu`
 
 ***
 
@@ -16,10 +16,10 @@
 
 1. Fill `secrets.env` with credentials
 
-1. Update variables in locals inside `workstation/main.tf` if needed. Use commands below to check your changes.
+1. Update variables in locals inside `remote/main.tf` if needed. Use commands inside container to check your changes.
 
-        $ terraform fmt
-        $ terraform validate
+        $ t fmt
+        $ t validate
 
 ***
 
@@ -27,21 +27,21 @@
 
 1. Build docker container
 
-        $ docker-compose build
+        $ make build
 
 1. Run docker container
 
-        $ make dc_run
+        $ make infra
 
-1. Create SSH keys for root user at workstation which will be created
+1. Create SSH keys for root user at remote which will be created
 
         $ make generate_ssh
 
-1. Create workstation in Yandex cloud
+1. Create remote in Yandex cloud
 
-        $ cd workstation/
-        $ terraform init
-        $ terraform apply
+        $ cd remote
+        $ t init
+        $ t apply
 
 1. Confirm changes shown in plan
 
@@ -53,19 +53,19 @@
 
 ## Usage outside container
 
-1. To get workstation info use:
+1. To get remote info use:
 
         $ make dc_vm_info
 
-1. To get workstation IP address use:
+1. To get remote IP address use:
 
         $ make dc_vm_ip
 
-1. To start workstation use:
+1. To start remote use:
 
         $ make dc_vm_start
 
-1. To stop workstation use:
+1. To stop remote use:
 
         $ make dc_vm_stop
 
@@ -75,23 +75,23 @@
 
 ## Usage inside container
 
-1. If you don't run container with `make dc_run` setup `yandex CLI` with
+1. If you don't run container with `make infra` setup `yandex CLI` with
 
         $ make yc_init
 
-1. To get workstation info use:
+1. To get remote info use:
 
         $ make vm_info
 
-1. To get workstation IP address use:
+1. To get remote IP address use:
 
         $ make vm_ip
 
-1. To start workstation use:
+1. To start remote use:
 
         $ make vm_start
 
-1. To stop workstation use:
+1. To stop remote use:
 
         $ make vm_stop
 

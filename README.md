@@ -10,16 +10,21 @@
 
 ## Prepare to setup
 
-1. Create `secrets.env`
+- Copy `secrets.env.example` to `secrets.env` and fill or change variables
 
-1. Copy `secrets.env.example` contents to `secrets.env`
+- Copy `remote/terraform.tfvars.example` to `remote/terraform.tfvars` and fill or change variables
 
-1. Fill `secrets.env` with credentials
+### If you need to setup dns settings
 
-1. Update variables in locals inside `remote/main.tf` if needed. Use commands inside container to check your changes.
+- Setup `dns/domain` variable in `remote/terraform.tfvars`
 
-        $ t fmt
-        $ t validate
+Use this command to find os_image_id for your needs
+
+        yc compute image list --folder-id standard-images
+
+- Copy `yc-remote-dev/remote/dns_records/cname_records.json.example` to `yc-remote-dev/remote/dns_records/cname_records.json` and fill with required cname records
+
+- Copy `yc-remote-dev/remote/dns_records/txt_records.json.example` to `yc-remote-dev/remote/dns_records/txt_records.json` and fill with required txt records
 
 ***
 

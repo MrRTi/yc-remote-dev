@@ -1,0 +1,7 @@
+{
+  "*.${domain}.": {
+    "records": [
+      "subdomain.${domain}."
+    ]
+  }
+}

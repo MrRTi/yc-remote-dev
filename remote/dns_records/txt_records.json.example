@@ -1,0 +1,8 @@
+{
+  "subdomain.${domain}.": {
+    "records": [
+      "txt_one",
+      "txt_two"
+    ]
+  }
+}

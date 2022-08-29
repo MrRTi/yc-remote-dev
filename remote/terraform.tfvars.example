@@ -1,0 +1,25 @@
+hdd = {
+  name           = "ws-hdd-image"
+  os_image_id    = "fd8vmcue7aajpmeo39kk"
+  size_in_gb     = 30
+}
+
+
+instance = {
+  vm_platform               = "standard-v1"
+  number_of_cores           = 2
+  memory_in_gb              = 6
+  performance_percantage    = 100
+  allow_stopping_for_update = false
+}
+
+network = {
+  name    = "ws-network"
+  zone    = "ru-central1-a"
+}
+
+dns = {
+  domain_zone_name = "remote-zone"
+
+  domain  = ""
+}

@@ -6,3 +6,9 @@ secrets.env*
 **/terraform.tfstate*
 *.swp
 .DS_Store
+
+.env
+**/terraform.tfvars
+
+remote/dns_records/cname_records.json
+remote/dns_records/txt_records.json

@@ -25,13 +25,19 @@ variable "zone" {
 variable "ssh_key_path" {
   description = "Path to ssh key."
   type        = string
-  default     = "/yc-terraform/ssh_keys/root_ssh_key"
+  default     = "/infra/ssh_keys/root_ssh_key"
+}
+
+variable "service_name" {
+  description = "The name of service."
+  type        = string
+  default     = "infra"
 }
 
 variable "remote_name" {
   description = "The name of virtual machine."
   type        = string
-  default     = "workstation-1"
+  default     = "remote"
 }
 
 variable "username" {
@@ -40,8 +46,44 @@ variable "username" {
   default     = "ubuntu"
 }
 
-variable "service_name" {
-  description = "The name of service."
+variable "network_name" {
+  description = "Network name"
   type        = string
-  default     = "yc-terraform"
+  default     = "ws-network"
+}
+
+variable "hdd" {
+  description = "HDD params map"
+  type = object({
+    name        = string
+    os_image_id = string
+    size_in_gb  = number
+  })
+}
+
+variable "instance" {
+  description = "Instance params map"
+  type = object({
+    vm_platform               = string
+    number_of_cores           = number
+    memory_in_gb              = number
+    performance_percantage    = number
+    allow_stopping_for_update = bool
+  })
+}
+
+variable "network" {
+  description = "Network configuration map"
+  type = object({
+    name = string
+    zone = string
+  })
+}
+
+variable "dns" {
+  description = "DNS configuration map"
+  type = object({
+    domain           = string
+    domain_zone_name = string
+  })
 }

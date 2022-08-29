@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.1.0
+
+- Update: All variables for instance and hdd moved to tfvars
+- Added: Add dns setup, cname and txt records
+- Update: Moved hdd image and network to modules
+- Update: Bump yandex provider version up to 0.77.0
+
 ## v0.0.5
 
 - Update: Bump terraform version up to v.1.2.7

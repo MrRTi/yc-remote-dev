@@ -10,6 +10,8 @@
 
 ## Prepare to setup
 
+- Copy `.env.example` to `.env` and fill or change variables
+
 - Copy `secrets.env.example` to `secrets.env` and fill or change variables
 
 - Copy `remote/terraform.tfvars.example` to `remote/terraform.tfvars` and fill or change variables

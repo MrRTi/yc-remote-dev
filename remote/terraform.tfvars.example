@@ -1,7 +1,10 @@
 hdd = {
-  name           = "ws-hdd-image"
-  os_image_id    = "fd8vmcue7aajpmeo39kk"
+  name           = "remote-disk"
+  os_image_id    = "fd89jk9j9vifp28uprop" // Ubuntu 22.0
   size_in_gb     = 30
+  type           = "network-hddd" or "network-ssd"
+
+  backup_image_id    = ""
 }
 
 

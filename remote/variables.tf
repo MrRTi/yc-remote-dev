@@ -58,6 +58,9 @@ variable "hdd" {
     name        = string
     os_image_id = string
     size_in_gb  = number
+    type        = string
+
+    backup_image_id = string
   })
 }
 

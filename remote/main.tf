@@ -2,35 +2,14 @@ locals {
   instance_key_file = join(".", [join("/", ["", var.service_name, var.ssh_key_path]), "pub"])
 }
 
-moved {
-  from = yandex_compute_instance.workstation
-  to   = yandex_compute_instance.remote
-}
+resource "yandex_compute_disk" "disk" {
+  zone     = var.zone
 
-moved {
-  from = yandex_vpc_network.network
-  to   = module.network.yandex_vpc_network.network
-}
+  name     = var.hdd.name
+  type     = var.hdd.type
+  size     = var.hdd.size_in_gb
 
-moved {
-  from = yandex_vpc_subnet.ws-subnet
-  to   = module.network.yandex_vpc_subnet.subnet
-}
-
-moved {
-  from = yandex_vpc_address.ws-address
-  to   = module.network.yandex_vpc_address.external_address
-}
-
-moved {
-  from = yandex_compute_image.ws-hdd-image
-  to   = module.hdd_image.yandex_compute_image.hdd_image
-}
-
-module "hdd_image" {
-  source = "./modules/hdd_image"
-
-  hdd_params = var.hdd
+  image_id = length(var.hdd.backup_image_id) > 0 ? var.hdd.backup_image_id : var.hdd.os_image_id
 }
 
 resource "yandex_compute_instance" "remote" {
@@ -47,10 +26,7 @@ resource "yandex_compute_instance" "remote" {
   }
 
   boot_disk {
-    initialize_params {
-      size     = var.hdd.size_in_gb
-      image_id = module.hdd_image.image_id
-    }
+    disk_id = yandex_compute_disk.disk.id
   }
 
   network_interface {

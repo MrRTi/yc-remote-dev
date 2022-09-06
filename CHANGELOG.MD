@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.0.0
+
+- Added: Disc creation, disk type could be specified
+- Added: Possibility to specify the image to respore hdd from
+  - Create a new image at <https://console.cloud.yandex.com/folders/YOUR_FOLDER_ID/compute/images>
+  - Set ID of new image as backup_image_id. It will be used to create the disk.
+  - In other case public os_image_id will be used
+- Removed: hdd_image
+- Removed: moved blocks (was added for compability)
+  - Apply v0.1.0 to update your current state before this version
+
 ## v0.1.0
 
 - Update: All variables for instance and hdd moved to tfvars
